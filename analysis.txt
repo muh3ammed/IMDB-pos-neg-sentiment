@@ -17,9 +17,13 @@ Negative count = 25000
 
 ## عدد الكلمات الفريدة
 
-Command = sort -u IMDB\ Dataset.csv | wc -l
-sort : فرز كل سطر من الملف كوحدة ويقارن بعضها البعض. ومن ثم ترتيبها
--u : استبعد التكرارات
-wc : لمعرفة عدد الكلمات أو البايتات أو حتى عدد الكلمات في ملف
--l : طباعة عدد الأسطر
-Total unique words = 49582
+sed -e 's/[^a-zA-Z*0-9]/ /g;s/  */ /g' IMDB\ Dataset.csv
+
+Command = sed -E 's/[^a-zA-Z]/ /g;s/  */ /g' IMDB\ Dataset.csv | tr " " "\n" | sort -u | uniq -c | wc -l
+sed : أداة قوية لمعالجة محتوى النص وتصفيته وتحويله. تتضمن الوظائف الشائعة استبدال ، حذف ، إضافة ، تحديد صفوف معينة ، إلخ.
+-E : For use regular expressions
+tr " " "\n" : فصل الكلمات
+sort -u : ترتيب الكلمات
+uniq -c : إزالة الكلمات المكررة
+wc -l : حسب عدد الكلمات
+Total unique words = 127951
