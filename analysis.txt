@@ -17,8 +17,6 @@ Negative count = 25000
 
 ## عدد الكلمات الفريدة
 
-sed -e 's/[^a-zA-Z*0-9]/ /g;s/  */ /g' IMDB\ Dataset.csv
-
 Command = sed -E 's/[^a-zA-Z]/ /g;s/  */ /g' IMDB\ Dataset.csv | tr " " "\n" | sort -u | uniq -c | wc -l
 sed : أداة قوية لمعالجة محتوى النص وتصفيته وتحويله. تتضمن الوظائف الشائعة استبدال ، حذف ، إضافة ، تحديد صفوف معينة ، إلخ.
 -E : For use regular expressions
